@@ -1,0 +1,26 @@
+<div class="row mt-4 mb-3">
+    <div class="col d-flex justify-content-between align-items-center">
+        <h3>News from {{country}}</h3>
+        <button type="button" class="btn btn-warning" [routerLink]="['/countrylist']">Back</button>
+    </div> 
+</div>
+<table>
+    <tr *ngFor="let each of news;" class="row mt-4">
+            <td class="col align-self-center fixed-width">
+                <a href="{{each.url}}" target="_blank"><img src="{{each.urlToImage}}" alt="" class="rounded"></a>
+            </td>
+            <td class="col align-self-center fixed-width">
+                <form #ngForm="ngForm">
+                    <input type="checkbox" name="saved" [(ngModel)]="each.saved" (click)="saved(each)"> Save
+                </form>
+                <div class="title">{{each.title}}</div>
+                <p><strong><i>{{each.description}}</i></strong></p>
+                <hr>
+                <p>{{each.content}}</p>
+                <p><i>Source: </i>{{each.source}}</p>
+                <p><i>Author: </i>{{each.author}}</p>
+                <p><i>Published: </i>{{each.publishedAt}}</p>
+                <hr>    
+            </td>
+    </tr>
+</table>
